@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: acitypay-dev
+  labels:
+    app.kubernetes.io/name: acitypay
+    app.kubernetes.io/env: dev

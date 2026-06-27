@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: acitypay-config
+  namespace: acitypay-dev
+data:
+  SPRING_PROFILES_ACTIVE: "dev"
+  APP_NAME: "acitypay"
+  APP_ENV: "dev"
+
+  DB_HOST: "postgres"
+  DB_PORT: "5432"
+  DB_NAME: "acitypay"
+
+  KEYCLOAK_URL: "http://keycloak:8080"
+  KEYCLOAK_REALM: "acitypay-dev"
+
+  MINIO_URL: "http://minio:9000"
+  MINIO_BUCKET_RAW: "acitypay-dev-raw"
+  MINIO_BUCKET_ENCRYPTED: "acitypay-dev-encrypted"
+  MINIO_BUCKET_RESPONSE: "acitypay-dev-response"
+
+  SFTP_HOST: "sftp-mock"
+  SFTP_PORT: "22"
+  SFTP_USER: "bcpuser"
+  SFTP_IN_PATH: "/upload/IN"
+  SFTP_OUT_PATH: "/upload/OUT"
+
+  BCP_FILE_MODE: "TXT"
+  BCP_PRODUCT_PAGOS_MASIVOS: "TLC_PagosMasivos"

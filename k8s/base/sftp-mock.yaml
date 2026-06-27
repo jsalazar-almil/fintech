@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sftp-mock
+  namespace: acitypay-dev
+  labels:
+    app: sftp-mock
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sftp-mock
+  template:
+    metadata:
+      labels:
+        app: sftp-mock
+    spec:
+      containers:
+        - name: sftp-mock
+          image: atmoz/sftp:latest
+          args:
+            - "bcpuser:bcppass:::upload"
+          ports:
+            - containerPort: 22
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sftp-mock
+  namespace: acitypay-dev
+spec:
+  selector:
+    app: sftp-mock
+  ports:
+    - name: sftp
+      port: 22
+      targetPort: 22
